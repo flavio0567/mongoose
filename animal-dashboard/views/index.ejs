@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animal Dashboard</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h3>Welcome to the Animal Dashboard</h3>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name  </th><th>Breed  </th><th>Gender  </th><th>Age  </th><th>Food  </th><th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (const animal of animals) { %>
+                <tr>
+                    <td><a href="/edit/<%= animal._id %>"</a><%= animal.animal_name %></td>
+                    <td><%= animal.animal_breed %></td>
+                    <td><%= animal.gender %></td>
+                    <td><%= animal.age %></td>
+                    <td><%= animal.food %></td>
+                    <td><a href="/show/<%= animal._id %>"</a>x</td>
+                </tr> 
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <!-- <button type="submit" class="btn btn-primary">Add New Animal!</button> -->
+    <a href="/add" type="button" class="btn btn-primary">Add New Animal!</a>
+
+</body>
+</html>

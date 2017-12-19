@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animal Dashboard</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h3>Edit Animal</h3>
+    <form action="/edit/<%= animal._id %>"  class="form-horizontal" role="form" method='post'>
+        <div class="box0">
+            <% if (animal) { %>
+            <div class="form-group">  
+                <label for="name" class="col-sm-2 control-label">Animal Name: </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="name" name="name" value="<%= animal.animal_name %>">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label for="breed" class="col-sm-2 control-label">Animal Breed: </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="breed" name="breed" value="<%= animal.animal_breed %>">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label for="gender" class="col-sm-2 control-label">Gender: </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="gender" name="gender" value="<%= animal.gender %>">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label for="age" class="col-sm-2 control-label">Age: </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="age" name="age" value="<%= animal.age %>">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label for="food" class="col-sm-2 control-label">Food: </label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="food" name="food" value="<%= animal.food %>">
+                </div>
+            </div>
+            <% } %>
+            <a href="/" type="button" class="btn btn1 btn-outline-success">Go Back!</a>
+            <button type="submit" class="btn btn-primary">Edit Animal!</button>
+        </div>
+    </form>
+</body>
+</html>
