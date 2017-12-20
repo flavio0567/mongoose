@@ -1,0 +1,94 @@
+<html>
+<head>
+  <title>Message Board</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/spacelab/bootstrap.min.css" rel="stylesheet" integrity="sha384-XnJ+ECa6Sjobnj1S2MSpiH4NIeXBFS5JGx3OhuVqjRzQnhWjjuBw3RRgQy6OOBIC" crossorigin="anonymous">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <h3>The Dojo Message Board</h3>
+  <hr>
+  <form action="/" class="form-horizontal" role="form" method='post'>
+    <div class="box0">
+        <div class="form-group"> 
+            <label class="col-form-label">Name:</label>
+            <div class="col-sm-10">
+                <input class="form-control" id="message-name" name="name" placeholder="Name" value="">
+            </div>
+        </div>
+        <div class="form-group"> 
+            <label class="col-form-label">Message:</label> 
+            <div class="col-sm-10">
+                <textarea class="form-control" id="message-text" name="message" value=""></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm">Post message!</button>
+    </div>
+  </form>
+  <% if (typeof(errors) !== 'undefined' ) { %>
+    <% for (const key in errors) { %>
+     <h3><%= errors[key].message %></h3>
+    <% } %>
+  <% } else { %>
+  <div id="scroll"> 
+    <% for(const message of messages) { %>
+        <label class="col-form-label message">Name:</label>
+        <p class="message"><%= message.name %></p>       
+        <label class="col-form-label message">Message:</label>          
+        <p class="message"><%= message.message %></p>
+        <% for (const comment of message._comments) { %>
+            <div class="col-sm-10 form-control-plaintext">
+                <p class="msg-comment">Name: <%= comment.name %></p>                 
+                <p class="msg-comment">Comment: <%= comment.text %></p> 
+            </div>   
+        <% }; %>
+        <form action="/<%= message._id %>" class="form-horizontal" role="form" method='post'>
+            <div class="msg-comment"> 
+                <label>Name:</label>
+                <div class="col-sm-10">
+                    <input class="form-control comment" id="name" name="name" value="">
+                </div>
+            </div>
+            <div class="msg-comment"> 
+                <label>Comment:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control comment" id="comment" name="comment" value=""></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Post comment!</button><br>
+        </form>
+    <% }; %>
+  </div> 
+  <% } %>
+</body>
+</html>
+<style>
+p {margin-top: 0;
+    margin-bottom: 0;
+}
+h3 {color:blue; 
+    margin-left: 10px; 
+    text-align: center;
+}
+label {font-weight: bold;
+}
+.box0 {width: 700px;
+    height: 260px;
+    margin: 10px 10px 0 300px;
+    padding: 10px;
+    border: 2px solid #e0e2e4;
+}
+#scroll {width: 700px;
+    margin-left: 300px;
+    height: 450px;
+    padding-left: 40px;
+    overflow: auto;
+    border: 2px solid #e0e2e4;
+}
+.message {font-size: 0.9em;
+}
+.comment {font-size: 0.8em;
+}
+.msg-comment {font-size: 0.8em; padding-left: 40px;
+}
+</style>
