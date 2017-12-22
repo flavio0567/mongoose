@@ -1,0 +1,23 @@
+
+h3 {color:blue; 
+margin-left: 10px; 
+text-align: center;
+}
+#scroll {width: 700px;
+margin: 0 0 10px 30px;
+height: 450px;
+background-color: white;
+overflow: auto;
+border: 2px solid #e0e2e4;
+}
+.message {font-size: 0.9em;
+}
+ul {padding-left: 10px;
+    list-style-type: none;
+}
+
+.date {margin-left: 370px;
+}
+.box-note {margin: 10px;
+    border: 2px solid #e0e2e4;
+}

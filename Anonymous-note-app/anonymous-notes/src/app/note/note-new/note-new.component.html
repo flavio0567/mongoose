@@ -1,0 +1,15 @@
+
+<h3>Anonymous Note</h3>
+
+<form (submit)="onSubmit($event)">
+  <div class="box0">
+      <div class="form-group"> 
+          <label class="col-form-label">Note:</label>
+          <div class="col-sm-10">
+              <textarea class="form-control" name="newNote.note" [(ngModel)]="newNote.note"></textarea>
+          </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm">Add note!</button>
+  </div>
+</form>
+

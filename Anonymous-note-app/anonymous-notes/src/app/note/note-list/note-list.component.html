@@ -1,0 +1,13 @@
+
+<div id="scroll"> 
+  <ul>
+    <li *ngFor="let note of notes">
+      <div class="box-note">
+        <p class="date">Noted on: {{ note.createdAt | date:'medium'}}</p>
+        <p>{{ note.note }}</p>
+      </div>
+    </li>
+  </ul>
+</div> 
+
+
