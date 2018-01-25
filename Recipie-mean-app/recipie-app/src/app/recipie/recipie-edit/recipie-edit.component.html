@@ -1,0 +1,44 @@
+<h1> {{ recipie.name }}</h1>
+<p class="right"><a [routerLink]="['/reset']">logout</a></p>
+
+<br><br>
+
+<form #createForm="ngForm" method="post" (submit)="createIngredient(createForm)" >
+    <label class="col-sm-2 control-label">Ingredient: </label>
+    <input 
+    class="form-control" 
+    type='text'
+    name="ingredient"
+    required
+    [(ngModel)]="recipie.ingredients.ingredient" 
+    #ingredient="ngModel">
+
+    <label class="col-sm-2 control-label">Amount: </label>
+    <input 
+    class="form-control"
+    type='text' 
+    name="amount"
+    required
+    [(ngModel)]="recipie.ingredients.amount" 
+    #amount="ngModel">
+    <br>
+    <button class="btn btn-primary btn-sm" name="submit" type="submit" [disabled]="createForm.invalid">Add Ingredient</button>
+
+</form>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Ingredient</th> 
+      <th scope="col">Amount</th> 
+    </tr>
+  </thead>
+      <tbody *ngIf="recipie.ingredients">
+        <tr *ngFor="let i of recipie.ingredients"> 
+        <td>{{ i.ingredient }}</td> 
+        <td>{{ i.amount  }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="right"><a [routerLink]="['/recipie', recipie['_id'] ]">View Recipie</a></p>

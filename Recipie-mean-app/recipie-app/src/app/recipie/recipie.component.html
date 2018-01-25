@@ -1,0 +1,17 @@
+
+<form (submit)="onSubmit()" #formData="ngForm">
+  <div class="form-group row box0"> 
+      <label class="col-form-label">Name:</label>
+      <div class="col-sm-12">
+          <input 
+          type="text" 
+          class="form-control" 
+          name="user" 
+          required
+          [(ngModel)]="user"
+          >
+      </div>
+      <button class="btn btn-primary btn-sm"  type="submit">Create</button>
+  </div>
+
+</form>

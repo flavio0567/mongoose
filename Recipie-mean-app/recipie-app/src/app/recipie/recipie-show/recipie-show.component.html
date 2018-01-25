@@ -1,0 +1,22 @@
+<h1>Welcome, {{ user }}</h1>
+
+<hr>
+
+<h4>{{ recipie.name }}, by {{ recipie.user }} </h4>
+<h5>Rating: {{ likes }}</h5>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Ingredient</th> 
+      <th scope="col">Amount</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let i of recipie.ingredients">
+        <td>{{ i.ingredient }}</td> 
+        <td>{{ i.amount  }}</td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary btn-sm"  [routerLink]="['/recipie/update', recipie['_id'] ]">Edit Recipie</button>
+<button class="btn btn-primary btn-sm"  [routerLink]="['/all']" >Return to Recipies</button>

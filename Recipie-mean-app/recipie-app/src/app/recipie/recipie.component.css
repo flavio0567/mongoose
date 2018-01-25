@@ -1,0 +1,19 @@
+.errors{
+    width: inherit;
+    height: 40px;
+    display: block;
+    margin: 0px auto;
+    color: red;
+}
+h3 {text-align: center;
+}
+label, button {font-weight: bold;
+    margin-left: 20px;
+}
+.box0 {width: 700px;
+    height: 180px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #dfe3e4;
+    border: 2px solid grey;
+}

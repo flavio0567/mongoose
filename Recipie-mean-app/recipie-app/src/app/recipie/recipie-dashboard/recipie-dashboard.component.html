@@ -1,0 +1,32 @@
+<!-- <h1>Welcome, {{ recipie.user }}</h1> -->
+<h1>Welcome, {{ user }}</h1>
+<p class="right"><a [routerLink]="['/reset']">logout</a></p>
+
+<hr>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Recipie</th>
+        <th scope="col">Raking</th>
+        <th scope="col">Chef</th>
+        <th scope="col">Like</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipie of recipies">
+            <td><a [routerLink]="['/recipie', recipie['_id'] ]">{{ recipie['name'] }} </a></td>
+            <td>{{ recipie['likes'] }}</td>
+            <td>{{ recipie['user'] }}</td>
+          <td><button (click)="onButtonClick(recipie['_id'])" class="btn btn-primary btn-sm">Like</button></td>   
+      </tr>
+      <br>
+
+    </tbody>
+  </table> 
+
+<form (submit)="newRecipie()">
+    <button class="right" class="btn btn-primary btn-sm"  type="submit" >New Recipie</button>
+</form>
+
+
