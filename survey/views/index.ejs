@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SurveyFormSocketio</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <link rel='stylesheet' type="text/css" href='../static/style.css' / dfg >
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type ="text/javascript">
+    $(document). ready(function (){
+       // this triggers the connection event in our server!
+       var socket  = io.connect();
+       // we'll write all the socket stuff after the above line!
+       $( 'button').click(function (){
+           socket.emit( "posting_form", {name:  $('input[name="name"]').val(), location: $('select[name="location"]').val(),
+        language: $('select[name="language"]').val(), comment: $('textarea[name="comment"]').val() });
+       });
+       socket.on('updated_message', function (user){
+        $(".text1").html("You emitted the folowing information to the server: <b>" + JSON.stringify(user, null, 4) + "</b>");
+       });
+        socket.on('random_number', function (random){
+        $(".text2").html("Your lucky number emitted by the server is  <b>" + JSON.stringify(random, null, 4) + "</b>");
+       });
+   })
+</script>
+</head>
+<body>
+    <p class="text1"></p>
+    <p class="text2"></p>
+    <!-- <form action="/" method=''> -->
+        <div class="box0"> 
+            <div id="name"> 
+                <label class="col-lg-2" for="name">Your Name</label>
+                <input type="text" class="form-control" name="name" id="">
+            </div> 
+            <div class="col-lg-10">
+                <label class="col-lg-2 control-label" for="location">Dojo Location</label>
+                <select class="form-control" name="location">
+                    <option>Silicon Valley</option>
+                    <option>Seattle</option>
+                    <option>Los Angeles</option>
+                    <option>Washington DC</option>
+                    <option>Dallas</option>
+                    <option>Chicago</option>
+                    <option>Tulsa</option>
+                </select>
+                <label class="col-lg-2 control-label" for="language">Favorite Language</label>
+                <select class="form-control" name="language">
+                    <option>Python</option>
+                    <option>Java</option>
+                    <option>Mean</option>
+                    <option>C++</option>
+                    <option>iOS</option>
+                    <option>Ruby</option>
+                </select>
+                <label class="col-lg-2" for="comment">Comment (optional)</label>
+                <textarea class="form-control" rows="3" name="comment"></textarea>
+            </div>
+    
+            <button type="reset" class="btn1 btn btn-default">Cancel</button>
+            <!-- <button>Submit</button> -->
+            <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- </form> -->
+    </div>
+</body>
+</html>
